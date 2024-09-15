@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Translator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .form-container {
+            background-color: #fff;
+            padding: 20px 40px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+        .form-container h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+        .form-container input[type="text"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        .form-container select {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #fff;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        .form-container button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007BFF;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .form-container button:hover {
+            background-color: #0056b3;
+        }
+        .form-container p {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+        .form-container .translated-text {
+            margin-top: 10px;
+            font-size: 16px;
+            color: #555;
+            border-top: 1px solid #eee;
+            padding-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Language Translator</h2>
+        <form method="post">
+            {% csrf_token %}
+            <input type="text" name="text" placeholder="Enter text to translate" required>
+            <select required name="language">
+                <option value="" disabled selected>Select a language</option>
+                <option value="Hindi">Hindi</option>
+                <option value="Marathi">Marathi</option>
+                <option value="German">German</option>
+                <option value="Spanish">Spanish</option>
+                <option value="French">French</option>
+                <option value="Chinese">Chinese</option>
+                <option value="Japanese">Japanese</option>
+                <option value="Korean">Korean</option>
+                <option value="Portuguese">Portuguese</option>
+                <option value="Russian">Russian</option>
+                <option value="Arabic">Arabic</option>
+            </select>
+            <button type="submit">Translate</button>
+        </form>
+        <p>Translated Text</p>
+        <p class="translated-text">{{ translation }}</p>
+    </div>
+</body>
+</html>
